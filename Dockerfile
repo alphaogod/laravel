@@ -1,5 +1,5 @@
 #stage1
-FROM php:8.2-apache-slim AS builder
+FROM php:8.2-apache AS builder
 
 WORKDIR /var/www/html
 
