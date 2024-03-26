@@ -3,7 +3,16 @@ FROM php:8.2-fpm-alpine AS builder
 
 WORKDIR /var/www/html
 
-RUN yum update -y && yum install -y libzip-dev unzip libonig-dev libxml2-dev git && docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache && pecl install xdebug && docker-php-ext-enable xdebug
+RUN apk update && \
+    apk add --no-cache \
+        libzip-dev \
+        unzip \
+        onig-dev \
+        libxml2-dev \
+        git && \
+    docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache && \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug
 
 COPY . .
 
@@ -11,7 +20,7 @@ COPY .env .env
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
-RUN apt-get install -y sqlite3
+RUN apk add --no-cache sqlite3
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
