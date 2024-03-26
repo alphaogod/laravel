@@ -1,5 +1,5 @@
 #stage1
-FROM php:8.2-apache AS builder
+FROM php:8.2-fpm-alpine AS builder
 
 WORKDIR /var/www/html
 
@@ -30,7 +30,7 @@ RUN php artisan key:generate
 RUN composer update
 
 #stage2
-FROM php:8.2-apache
+FROM php:8.2-fpm-alpine
 
 WORKDIR /var/www/html
 
