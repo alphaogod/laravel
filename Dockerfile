@@ -7,7 +7,7 @@ RUN apk update && \
     apk add --no-cache \
         libzip-dev \
         unzip \
-        onig-dev \
+        #onig-dev \
         libxml2-dev \
         git && \
     docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache && \
