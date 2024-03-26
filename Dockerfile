@@ -11,6 +11,7 @@ RUN apk update && \
         #onig-dev \
         libxml2-dev \
         oniguruma-dev \
+        musl-dev \
         git && \
     docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache && \
     pecl install xdebug && \
