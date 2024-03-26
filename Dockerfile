@@ -7,6 +7,7 @@ RUN apk update && \
     apk add  \
         libzip-dev \
         unzip \
+        php8-dev \
         #onig-dev \
         libxml2-dev \
         oniguruma-dev \
