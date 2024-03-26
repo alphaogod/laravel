@@ -3,15 +3,7 @@ FROM php:8.2-fpm-alpine AS builder
 
 WORKDIR /var/www/html
 
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    unzip \
-    libonig-dev \
-    libxml2-dev \
-    git \
-&& docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache \
-&& pecl install xdebug \
-&& docker-php-ext-enable xdebug
+RUN yum update -y && yum install -y libzip-dev unzip libonig-dev libxml2-dev git && docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache && pecl install xdebug && docker-php-ext-enable xdebug
 
 COPY . .
 
