@@ -1,21 +1,18 @@
 #stage1
-FROM php:8.2-fpm-alpine AS builder
+FROM php:8.2-apache AS builder
 
 WORKDIR /var/www/html
 
-RUN apk update && \
-    apk add  \
-        libzip-dev \
-        unzip \
-        php82-dev \
-        #onig-dev \
-        libxml2-dev \
-        oniguruma-dev \
-        build-base \
-        git && \
-    docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache && \
-    pecl install xdebug && \
-    docker-php-ext-enable xdebug
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    unzip \
+    libonig-dev \
+    libxml2-dev \
+    git \
+&& docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache \
+&& pecl install xdebug \
+&& docker-php-ext-enable xdebug
+
 
 COPY . .
 
@@ -23,7 +20,7 @@ COPY .env .env
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
-RUN apk add --no-cache sqlite3
+RUN apt-get install -y sqlite3
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -34,7 +31,7 @@ RUN php artisan key:generate
 RUN composer update
 
 #stage2
-FROM php:8.2-fpm-alpine
+FROM php:8.2-apache
 
 WORKDIR /var/www/html
 
