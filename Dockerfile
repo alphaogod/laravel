@@ -4,7 +4,7 @@ FROM php:8.2-fpm-alpine AS builder
 WORKDIR /var/www/html
 
 RUN apk update && \
-    apk add --no-cache \
+    apk add  \
         libzip-dev \
         unzip \
         #onig-dev \
