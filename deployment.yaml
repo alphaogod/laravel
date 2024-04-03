@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: laravel-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: laravel-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: laravel-app
-        image: 590184096928.dkr.ecr.ap-south-1.amazonaws.com/my-image-repo/laravel:latest
+        image: 590184096928.dkr.ecr.ap-south-1.amazonaws.com/my-image-repo/laravel:laravel
         ports:
         - containerPort: 8000
         resources:  
