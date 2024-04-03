@@ -65,6 +65,11 @@ resource "aws_security_group" "node_security_group" {
   # Add rules to allow inbound and outbound traffic as needed
 }
 
+resource "aws_iam_instance_profile" "node_profile" {
+  name = "my-node-profile"
+  role = aws_iam_role.node_group_role.name
+}
+
 # Add node configuration
 resource "aws_launch_configuration" "my_launch_configuration" {
   name_prefix              = "eks-node-launch-config-"
