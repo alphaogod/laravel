@@ -3,7 +3,7 @@ resource "aws_eks_cluster" "my_eks_cluster" {
   role_arn = aws_iam_role.eks_cluster_role.arn
   vpc_config {
     security_group_ids = [aws_security_group.eks_cluster_sg.id]
-    subnet_ids = subnet_ids = [
+    subnet_ids = [
       aws_subnet.public_subnet_1.id,
       aws_subnet.public_subnet_2.id
     ]
