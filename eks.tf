@@ -1,30 +1,26 @@
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "20.8.4"
-  cluster_name    = local.cluster_name
-  cluster_version = var.kubernetes_version
-  subnet_ids      = module.vpc.private_subnets
+  source  = "terraform-aws-modules/eks/aws"
+  version = "17.1.0"
 
-  enable_irsa = true
-
-  tags = {
-    cluster = "demo"
-  }
+  cluster_name    = "my-eks-cluster"
+  cluster_version = "1.28"
+  subnets         = module.vpc.private_subnets
 
   vpc_id = module.vpc.vpc_id
 
-  eks_managed_node_group_defaults = {
-    ami_type               = "AL2_x86_64"
-    instance_types         = ["t3a.medium"]
-    vpc_security_group_ids = [aws_security_group.all_worker_mgmt.id]
-  }
+  node_groups = {
+    eks_nodes = {
+      desired_capacity = 2
+      max_capacity     = 10
+      min_capacity     = 1
 
-  eks_managed_node_groups = {
+      instance_type = "t3a.medium"
+      key_name      = "laravelnew.pem"
 
-    node_group = {
-      min_size     = 2
-      max_size     = 6
-      desired_size = 2
+      additional_tags = {
+        Environment = "test"
+        Name        = "eks-worker-node"
+      }
     }
   }
 }
