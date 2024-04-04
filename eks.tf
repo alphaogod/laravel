@@ -73,7 +73,7 @@ resource "aws_iam_instance_profile" "node_profile" {
 # Add node configuration
 resource "aws_launch_configuration" "my_launch_configuration" {
   name_prefix              = "eks-node-launch-config-"
-  image_id                 = "ami-09298640a92b2d12c"  # Specify the appropriate AMI
+  image_id                 = "ami-007020fd9c84e18c7"  # Specify the appropriate AMI
   instance_type            = "t3a.medium"  # Adjust instance type as needed
   iam_instance_profile     = aws_iam_instance_profile.node_profile.name
   security_groups          = [aws_security_group.node_security_group.id]
