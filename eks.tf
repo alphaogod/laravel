@@ -92,6 +92,6 @@ resource "aws_autoscaling_group" "my_autoscaling_group" {
   min_size              = 1
   max_size              = 10
   desired_capacity      = 1
-  vpc_zone_identifier   = [aws_subnet.public_subnet.id]  # Specify the subnet IDs
+  vpc_zone_identifier   = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]  # Specify the subnet IDs
 }
 
