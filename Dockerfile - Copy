@@ -9,11 +9,10 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     git \
+    php-xml \
 && docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache \
 && pecl install xdebug \
-&& docker-php-ext-enable xdebug \
-&& apt-get clean
-
+&& docker-php-ext-enable xdebug
 
 
 COPY . .
@@ -43,10 +42,8 @@ RUN sed -i -e 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g'
 
 RUN a2enmod rewrite
 
-EXPOSE 8082
+EXPOSE 8000
+
+CMD ["apache2-foreground"]
 
 RUN php artisan migrate:fresh --seed
-
-CMD php artisan serve --host=0.0.0.0 --port=8082
-
-#CMD ["apache2-foreground"]

@@ -4,11 +4,11 @@ services:
   web:
     build: .
     ports:
-      - "8000:80"
-    volumes:
-      - .:/var/www/html
-      - C:\Users\user\Desktop\sqlitedb:/var/www/html
+      - "8082:80"
     environment:
       - APP_ENV=local
       - DB_CONNECTION=sqlite
-      - DB_DATABASE=conduit.sqlite
+      - DB_DATABASE=/var/www/html/conduit.sqlite
+    volumes:
+      - .:/var/www/html
+      - C:\Users\user\Desktop\sqlitedb:/var/www/html

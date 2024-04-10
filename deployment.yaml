@@ -16,7 +16,7 @@ spec:
       - name: laravel-app
         image: 590184096928.dkr.ecr.ap-south-1.amazonaws.com/my-image-repo/laravel:laravel
         ports:
-        - containerPort: 8000
+        - containerPort: 8082
         resources:  
           limits:
             cpu: "1" 
@@ -27,9 +27,11 @@ kind: Service
 metadata:
   name: laravel-app-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 80
-    targetPort: 8000
+  - protocol: TCP
+    port: 80
+    targetPort: 8082
+    nodePort: 30036
   selector:
     app: laravel-app
