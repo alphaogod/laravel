@@ -1,68 +1,30 @@
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
-
-  cluster_name    = "my-eks-cluster"
+  source          = "terraform-aws-modules/eks/aws"
+  version         = "20.8.4"
+  cluster_name    = local.cluster_name
   cluster_version = "1.29"
+  subnet_ids      = module.vpc.private_subnets
 
-  cluster_endpoint_public_access  = true
+  enable_irsa = true
 
-  cluster_addons = {
-    coredns = {
-      most_recent = true
-    }
-    kube-proxy = {
-      most_recent = true
-    }
-    vpc-cni = {
-      most_recent = true
-    }
+  tags = {
+    cluster = "demo"
   }
 
-  vpc_id                   =  module.vpc.vpc_id
-  subnet_ids               =  module.vpc.private_subnets
-  control_plane_subnet_ids =  module.vpc.private_subnets
+  vpc_id = module.vpc.vpc_id
 
-  # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
-    instance_types = ["t2.micro", "t3a.medium", "t2.large", "t3a.micro"]
+    ami_type               = "AL2_x86_64"
+    instance_types         = ["t3.medium"]
+    vpc_security_group_ids = [aws_security_group.all_worker_mgmt.id]
   }
 
   eks_managed_node_groups = {
-    example = {
-      min_size     = 1
-      max_size     = 10
-      desired_size = 1
 
-      instance_types = ["t3a.medium"]
-      capacity_type  = "SPOT"
+    node_group = {
+      min_size     = 2
+      max_size     = 6
+      desired_size = 2
     }
-  }
-
-  # Cluster access entry
-  # To add the current caller identity as an administrator
-  enable_cluster_creator_admin_permissions = true
-
-  access_entries = {
-    # One access entry with a policy associated
-    example = {
-      kubernetes_groups = []
-      principal_arn     = "arn:aws:iam::590184096928:role/laravelapp"
-
-      policy_associations = {
-        example = {
-          policy_arn = "arn:aws:iam::590184096928:role/laravelapp"
-          access_scope = {
-            namespaces = ["default"]
-            type       = "namespace"
-          }
-        }
-      }
-    }
-  }
-
-  tags = {
-    Environment = "dev"
-    Terraform   = "true"
   }
 }
