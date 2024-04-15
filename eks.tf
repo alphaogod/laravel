@@ -10,7 +10,6 @@ module "eks" {
   subnet_ids      = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
   
-  
   eks_managed_node_groups = {
     my_node_group = {
       desired_capacity = 2
@@ -18,6 +17,9 @@ module "eks" {
       min_capacity     = 1
       instance_type    = "t3a.medium"
       enable_cluster_creator_admin_permissions = true
+      authentication_mode = "API_AND_CONFIG_MAP"
+      cluster_endpoint_public_access  = true
+
     }
   }
 }
