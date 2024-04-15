@@ -5,7 +5,7 @@ module "eks" {
   version         = "~> 20.0"
 
   cluster_name    = "my-eks-cluster"
-  cluster_version = "1.20" 
+  cluster_version = "1.29" 
   cluster_endpoint_public_access  = true
   subnet_ids      = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
@@ -21,6 +21,3 @@ module "eks" {
     }
   }
 }
-resource "aws_cloudwatch_log_group" "custom_log_group" {
-    name             = "/my-custom-log-group"
-    retention_in_days = 30
