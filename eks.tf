@@ -17,6 +17,25 @@ module "eks" {
       min_capacity     = 1
       instance_type    = "t3a.medium"
       enable_cluster_creator_admin_permissions = true
+
+  access_entries = {
+    # One access entry with a policy associated
+    example = {
+      kubernetes_groups = []
+      principal_arn     = "arn:aws:iam::590184096928:role/AmazonEKSNodeRole"
+
+      policy_associations = {
+        example = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
+          access_scope = {
+            namespaces = ["default"]
+            type       = "namespace"
+          }
+        }
+      }
+    }
+  }
+
       authentication_mode = "API_AND_CONFIG_MAP"
       cluster_endpoint_public_access  = true
 
