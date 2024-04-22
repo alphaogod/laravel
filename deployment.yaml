@@ -27,7 +27,7 @@ kind: Service
 metadata:
   name: laravel-app-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - protocol: TCP
     port: 80
