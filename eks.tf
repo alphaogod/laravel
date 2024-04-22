@@ -47,7 +47,7 @@ module "eks" {
     # One access entry with a policy associated
     example = {
       kubernetes_groups = []
-      principal_arn     = "arn:aws:iam::590184096928:role/AmazonEKSNodeRole"
+      principal_arn     = "arn:aws:iam::590184096928:role/EksClusterServiceRole"
 
       policy_associations = {
         example = {
