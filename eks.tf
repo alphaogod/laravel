@@ -23,7 +23,7 @@ module "eks" {
   subnet_ids               = ["subnet-0ceffbe2ce6f25a39", "subnet-0e3472b2af17657d8", "subnet-071e6a5b8253b0256"]
   control_plane_subnet_ids = ["subnet-076d11ee10044c8f2", "subnet-0f41d521da237a275", "subnet-0d4aa90db0764ec2f"]
 
-  # EKS Managed Node Group(s)
+  # EKS Managed Node Group
   eks_managed_node_group_defaults = {
     instance_types = ["t3a.medium", "t3.medium", "t3a.small", "t3.small"]
   }
@@ -39,12 +39,11 @@ module "eks" {
     }
   }
 
-  # Cluster access entry
-  # To add the current caller identity as an administrator
+
   enable_cluster_creator_admin_permissions = true
 
   access_entries = {
-    # One access entry with a policy associated
+  
     example = {
       kubernetes_groups = []
       principal_arn     = "arn:aws:iam::590184096928:role/EksClusterServiceRole"
