@@ -5,7 +5,7 @@ WORKDIR /var/www/html
 
 # Install dependencies (including the C compiler)
 RUN apk update && apk add --no-cache \
-    libzip-dev unzip libxml2-dev sqlite-dev git oniguruma-dev build-base
+    libzip-dev unzip libxml2-dev sqlite-dev git oniguruma-dev autoconf build-base
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache
 RUN pecl install xdebug
