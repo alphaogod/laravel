@@ -13,9 +13,9 @@ RUN apk update \
         git \
         oniguruma-dev
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache \
-&& pecl install xdebug \
-&& docker-php-ext-enable xdebug
+RUN docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
 
 # Copy application files
 COPY . .
