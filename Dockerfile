@@ -5,11 +5,11 @@ WORKDIR /var/www/html
 
 # Install dependencies (including linux-headers)
 RUN apk update && apk add --no-cache \
-    libzip-dev unzip libxml2-dev sqlite-dev git oniguruma-dev linux-headers
+    libzip-dev unzip libxml2-dev sqlite-dev git oniguruma-dev autoconf linux-headers
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
+#RUN pecl install xdebug
+#RUN docker-php-ext-enable xdebug
 
 # Copy application files
 COPY . .
