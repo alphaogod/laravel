@@ -23,7 +23,7 @@ spec:
             memory: "2Gi"
         volumeMounts:
         - name: db-persistent-storage
-          mountPath: /var/lib/db # Mount path inside the container
+          mountPath: /var/lib/db  # Adjust the mount path as needed
       volumes:
       - name: db-persistent-storage
         persistentVolumeClaim:
