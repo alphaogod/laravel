@@ -21,6 +21,13 @@ spec:
           limits:
             cpu: "1" 
             memory: "2Gi"
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/db # Mount path inside the container
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: db-pvc
 ---
 apiVersion: v1
 kind: Service
