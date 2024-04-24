@@ -3,15 +3,9 @@ FROM php:8.2-cli-alpine AS builder
 
 WORKDIR /var/www/html
 
-# Install dependencies
-RUN apk update \
-    && apk add --no-cache \
-        libzip-dev \
-        unzip \
-        libxml2-dev \
-        sqlite-dev \
-        git \
-        oniguruma-dev
+# Install dependencies (including autoconf)
+RUN apk update && apk add --no-cache \
+    libzip-dev unzip libxml2-dev sqlite-dev git oniguruma-dev autoconf
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache
 RUN pecl install xdebug
