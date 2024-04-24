@@ -11,6 +11,7 @@ RUN apk update \
         libxml2-dev \
         sqlite-dev \
         git \
+        oniguruma-dev \
     && docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath opcache \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
@@ -38,6 +39,9 @@ COPY --from=builder /var/www/html /var/www/html
 
 # Expose port
 EXPOSE 8082
+
+# Add database persistence
+VOLUME /var/lib/mysql
 
 # Run migrations
 CMD php artisan migrate:fresh --seed && php artisan serve --host=0.0.0.0 --port=8082

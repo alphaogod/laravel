@@ -10,5 +10,6 @@ services:
       - DB_CONNECTION=sqlite
       - DB_DATABASE=/var/www/html/conduit.sqlite
     volumes:
-      - .:/var/www/html
-      - C:\Users\user\Desktop\sqlitedb:/var/www/html
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
