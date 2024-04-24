@@ -7,5 +7,7 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/var/lib/db"  # Adjust the path to your desired storage location
+  storageClassName: gp2
+  awsElasticBlockStore:
+    volumeID: vol-0542868b2cdd1451a
+    fsType: ext4  # or your desired filesystem type
