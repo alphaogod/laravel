@@ -22,10 +22,10 @@ spec:
             cpu: "1" 
             memory: "2Gi"
         volumeMounts:
-        - name: mysql-persistent-storage
+        - name: db-persistent-storage
           mountPath: /var/lib/db # Mount path inside the container
       volumes:
-      - name: mysql-persistent-storage
+      - name: db-persistent-storage
         persistentVolumeClaim:
           claimName: db-pvc
 ---
