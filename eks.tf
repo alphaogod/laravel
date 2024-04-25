@@ -32,7 +32,7 @@ module "eks" {
     example = {
       min_size     = 1
       max_size     = 10
-      desired_size = 5
+      desired_size = 1
 
       instance_types = ["t3.large"]
       capacity_type  = "SPOT"
