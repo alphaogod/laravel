@@ -18,9 +18,13 @@ spec:
         ports:
         - containerPort: 8082
         resources:  
+          requests:
+            cpu: "500m"  # Adjust CPU request as needed
+            memory: "1Gi"  # Adjust memory request as needed
           limits:
-            cpu: "2" 
-            memory: "8Gi"
+            cpu: "2"  # Adjust CPU limit as needed
+            memory: "4Gi"  
+
         volumeMounts:
         - name: db-persistent-storage
           mountPath: /var/lib/db  # Adjust the mount path as needed
