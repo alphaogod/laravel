@@ -25,13 +25,13 @@ spec:
             cpu: "2"  # Adjust CPU limit as needed
             memory: "4Gi"  
 
-        volumeMounts:
-        - name: db-persistent-storage
-          mountPath: /var/lib/db  # Adjust the mount path as needed
-      volumes:
-      - name: db-persistent-storage
-        persistentVolumeClaim:
-          claimName: db-pvc
+        #volumeMounts:
+        #- name: db-persistent-storage
+          #mountPath: /var/lib/db  # Adjust the mount path as needed
+      #volumes:
+      #- name: db-persistent-storage
+        #persistentVolumeClaim:
+          #claimName: db-pvc
 ---
 apiVersion: v1
 kind: Service
