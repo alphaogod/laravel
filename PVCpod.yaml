@@ -8,11 +8,11 @@ spec:
       image: nginx
       resources:
         limits:
-          memory: "4Gi"  # Example memory limit
+          memory: "8Gi"  # Example memory limit
           cpu: "2"       # Example CPU limit
         requests:
-          memory: "256Mi"  # Example memory request
-          cpu: "0.5"
+          memory: "1Gi"  # Example memory request
+          cpu: "2"
       volumeMounts:
         - name: db-persistent-storage
           mountPath: /var/lib/db 
