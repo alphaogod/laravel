@@ -8,11 +8,11 @@ spec:
       image: nginx
       resources:
         limits:
-          memory: "512Mi"  # Example memory limit
-          cpu: "0.5"       # Example CPU limit
+          memory: "4Gi"  # Example memory limit
+          cpu: "2"       # Example CPU limit
         requests:
           memory: "256Mi"  # Example memory request
-          cpu: "0.2"
+          cpu: "0.5"
       volumeMounts:
         - name: my-ebs-volume
           mountPath: /data
