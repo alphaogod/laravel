@@ -14,9 +14,9 @@ spec:
           memory: "256Mi"  # Example memory request
           cpu: "0.5"
       volumeMounts:
-        - name: my-ebs-volume
+        - name: db-persistent-storage
           mountPath: /var/lib/db 
   volumes:
-    - name: my-ebs-volume
+    - name: db-persistent-storage
       persistentVolumeClaim:
         claimName: my-ebs-pvc
