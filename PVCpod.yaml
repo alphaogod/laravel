@@ -9,10 +9,10 @@ spec:
       resources:
         limits:
           memory: "4Gi"  # Example memory limit
-          cpu: "2"       # Example CPU limit
+          cpu: "4"       # Example CPU limit
         requests:
           memory: "1Gi"  # Example memory request
-          cpu: "2"
+          cpu: "4"
       volumeMounts:
         - name: db-persistent-storage
           mountPath: /data
