@@ -25,13 +25,13 @@ spec:
             cpu: "2"  # Adjust CPU limit as needed
             memory: "4Gi"  
 
-        #volumeMounts:
-        #- name: db-persistent-storage
-          #mountPath: /data # Adjust the mount path as needed
-      #volumes:
-      #- name: db-persistent-storage
-        #persistentVolumeClaim:
-          #claimName: my-ebs-pvc
+        volumeMounts:
+        - name: db-persistent-storage
+          mountPath: /data # Adjust the mount path as needed
+      volumes:
+      - name: db-persistent-storage
+        persistentVolumeClaim:
+          claimName: my-ebs-pvc
 ---
 apiVersion: v1
 kind: Service
