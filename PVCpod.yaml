@@ -6,16 +6,16 @@ spec:
   containers:
     - name: my-new-container
       image: nginx
+      resources:
+        limits:
+          memory: "512Mi"  # Example memory limit
+          cpu: "0.5"       # Example CPU limit
+        requests:
+          memory: "256Mi"  # Example memory request
+          cpu: "0.2"
       volumeMounts:
         - name: my-ebs-volume
           mountPath: /data
-  resources:
-  limits:
-    memory: "512Mi"  # Example memory limit
-    cpu: "0.5"       # Example CPU limit
-  requests:
-    memory: "256Mi"  # Example memory request
-    cpu: "0.2"
   volumes:
     - name: my-ebs-volume
       persistentVolumeClaim:
