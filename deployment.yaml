@@ -20,7 +20,7 @@ spec:
         resources:  
           requests:
             cpu: "4"   # Adjust CPU request as needed
-            memory: "1Gi"  # Adjust memory request as needed
+            memory: "4Gi"  # Adjust memory request as needed
           limits:
             cpu: "4"  # Adjust CPU limit as needed
             memory: "4Gi"  

@@ -11,7 +11,7 @@ spec:
           memory: "4Gi"  # Example memory limit
           cpu: "4"       # Example CPU limit
         requests:
-          memory: "1Gi"  # Example memory request
+          memory: "4Gi"  # Example memory request
           cpu: "4"
       volumeMounts:
         - name: db-persistent-storage
