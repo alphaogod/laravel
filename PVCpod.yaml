@@ -12,7 +12,7 @@ spec:
           cpu: "4"       # Example CPU limit
         requests:
           memory: "4Gi"  # Example memory request
-          cpu: "4"
+          cpu: "1"
       volumeMounts:
         - name: db-persistent-storage
           mountPath: /data

@@ -19,7 +19,7 @@ spec:
         - containerPort: 8082
         resources:  
           requests:
-            cpu: "4"   # Adjust CPU request as needed
+            cpu: "1"   # Adjust CPU request as needed
             memory: "1000Gi"  # Adjust memory request as needed
           limits:
             cpu: "4"  # Adjust CPU limit as needed
