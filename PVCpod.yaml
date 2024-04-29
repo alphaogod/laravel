@@ -15,7 +15,7 @@ spec:
           cpu: "0.5"
       volumeMounts:
         - name: my-ebs-volume
-          mountPath: /data
+          mountPath: /var/lib/db 
   volumes:
     - name: my-ebs-volume
       persistentVolumeClaim:
