@@ -23,7 +23,7 @@ spec:
             memory: "1Gi"  # Adjust memory request as needed
           limits:
             cpu: "2"  # Adjust CPU limit as needed
-            memory: "8Gi"  
+            memory: "4Gi"  
 
         volumeMounts:
         - name: db-persistent-storage
