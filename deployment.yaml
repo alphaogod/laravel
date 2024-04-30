@@ -19,11 +19,11 @@ spec:
         - containerPort: 8082
         resources:  
           requests:
-            cpu: "2"   # Adjust CPU request as needed
-            memory: "1000Gi"  # Adjust memory request as needed
+            cpu: "1"   # Adjust CPU request as needed
+            memory: "1Gi"  # Adjust memory request as needed
           limits:
             cpu: "4"  # Adjust CPU limit as needed
-            memory: "1000Gi"  
+            memory: "4Gi"  
 
         #volumeMounts:
         #- name: db-persistent-storage
