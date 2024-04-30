@@ -7,6 +7,6 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  storageClassName: gp2  # Specify the StorageClass name
+  storageClassName: gp2  
   awsElasticBlockStore:
-    volumeID: vol-0542868b2cdd1451a  # Ensure this is correct for AWS EBS
+    volumeID: vol-0542868b2cdd1451a  
