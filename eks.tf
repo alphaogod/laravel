@@ -18,7 +18,7 @@ module "eks" {
       most_recent = true
     }
 
-    ebs-csi-driver ={
+    aws-ebs-csi-driver ={
       most_recent = true
     } 
   }
