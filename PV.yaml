@@ -14,5 +14,5 @@ spec:
     path: /dev/xvda  # Adjust device path based on your EBS volume
   awsElasticBlockStore:
     volumeID: vol-0542868b2cdd1451a  # Replace with your EBS volume ID
-    fsType: gp3  # Specify filesystem type
+    #fsType: gp3  # Specify filesystem type
 
