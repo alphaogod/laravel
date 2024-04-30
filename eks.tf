@@ -17,6 +17,10 @@ module "eks" {
     vpc-cni = {
       most_recent = true
     }
+
+    ebs-csi-driver ={
+      most_recent = true
+    } 
   }
 
   vpc_id                   = "vpc-058efaf2b2a8d64e1"
