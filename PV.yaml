@@ -8,11 +8,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: aws-ebs
-  hostPath:
-    # Replace with your actual EBS volume details
-    path: /dev/xvda  # Adjust device path based on your EBS volume
+  storageClassName: aws-ebs  # Optional: Reference a storage class
   awsElasticBlockStore:
     volumeID: vol-0542868b2cdd1451a  # Replace with your EBS volume ID
-    #fsType: gp3  # Specify filesystem type
+    fsType: ext4  # Specify filesystem type
 
