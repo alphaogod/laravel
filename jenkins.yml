@@ -1,0 +1,39 @@
+---
+- hosts: 65.2.172.67
+  become: true
+  tasks:
+    - name: Update package lists
+      apt: update_cache=yes
+
+    - name: Install Java (Optional, adjust based on your AMI)
+      apt:
+        name: default-jre
+        state: present
+
+    - name: Add Jenkins repository key
+      apt_key:
+        url: https://pkg.jenkins.io/pubkey
+        state: present
+
+    - name: Add Jenkins repository
+      apt_repository:
+        repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
+        state: present
+
+    - name: Update package lists again
+      apt: update_cache=yes
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+
+    - name: Start Jenkins service
+      service:
+        name: jenkins
+        state: started
+
+    - name: Enable Jenkins service on boot
+      service:
+        name: jenkins
+        enabled: yes

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8082:80"
+    environment:
+      - APP_ENV=local
+      - DB_CONNECTION=sqlite
+      - DB_DATABASE=/var/www/html/conduit.sqlite
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:

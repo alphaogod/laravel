@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravel-app
+  template:
+    metadata:
+      labels:
+        app: laravel-app
+    spec:
+      containers:
+      - name: laravel-app
+        image: 590184096928.dkr.ecr.ap-south-1.amazonaws.com/my-image-repo:latest
+        ports:
+        - containerPort: 8082
+        resources:  
+          requests:
+            cpu: "1"   # Adjust CPU request as needed
+            memory: "1Gi"  # Adjust memory request as needed
+          limits:
+            cpu: "4"  # Adjust CPU limit as needed
+            memory: "4Gi"  
+
+        volumeMounts:
+        - name: app-data
+          mountPath: /data
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: my-app-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravel-app-service
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8082
+    #nodePort: 30036
+  selector:
+    app: laravel-app
