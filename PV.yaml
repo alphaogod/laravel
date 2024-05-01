@@ -10,6 +10,6 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: aws-ebs  # Optional: Reference a storage class
   awsElasticBlockStore:
-    volumeID: vol-079b35b1f834afe26  # Replace with your EBS volume ID
+    volumeID: vol-0ef8cc8ca68e8e0c4  # Replace with your EBS volume ID
     fsType: ext4  # Specify filesystem type
 
