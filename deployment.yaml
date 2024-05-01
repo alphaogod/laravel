@@ -25,13 +25,13 @@ spec:
             cpu: "4"  # Adjust CPU limit as needed
             memory: "4Gi"  
 
-        #volumeMounts:
-        #- name: app-data
-          #mountPath: /data
-      #volumes:
-      #- name: app-data
-        #persistentVolumeClaim:
-          #claimName: my-app-pvc
+        volumeMounts:
+        - name: app-data
+          mountPath: /data
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: my-app-pvc
 ---
 apiVersion: v1
 kind: Service
